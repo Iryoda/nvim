@@ -1,0 +1,6 @@
+require("configs/lualine")
+require("configs/treesitter")
+require("configs/telescope")
+require("configs/gitsigns")
+require("configs/comment")
+require("configs/nvimtree")
