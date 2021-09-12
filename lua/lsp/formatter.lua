@@ -1,4 +1,10 @@
-local prettier = require("lsp.formatters.prettier")
+local function prettier()
+  return {
+    exe = "prettier",
+    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+    stdin = true
+  }
+end
 
 require("formatter").setup(
   {
@@ -12,7 +18,6 @@ require("formatter").setup(
       scss = {prettier},
       markdown = {prettier},
       rust = {
-        -- Rustfmt
         function()
           return {
             exe = "rustfmt",
@@ -22,7 +27,6 @@ require("formatter").setup(
         end
       },
       lua = {
-        -- luafmt
         function()
           return {
             exe = "luafmt",

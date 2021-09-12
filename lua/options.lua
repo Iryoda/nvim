@@ -12,6 +12,7 @@ opt.syntax = "on"
 opt.number = true
 opt.errorbells = false
 opt.completeopt = "menuone,noselect"
+opt.cursorline = true
 
 opt.autoindent = true
 opt.cindent = true

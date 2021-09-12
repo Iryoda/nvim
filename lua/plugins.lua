@@ -12,6 +12,8 @@ return require("packer").startup(
   function()
     use "wbthomason/packer.nvim"
 
+    use 'karb94/neoscroll.nvim' 
+
     use "folke/tokyonight.nvim"
 
     use "neovim/nvim-lspconfig"
