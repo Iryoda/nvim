@@ -1,1 +1,1 @@
-require'lspconfig'.tsserver.setup{}
+require'lspconfig'.typescript.setup{}

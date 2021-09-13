@@ -1,7 +1,7 @@
-local function prettier()
+local prettier = function()
   return {
     exe = "prettier",
-    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+    args = {"--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
     stdin = true
   }
 end
@@ -17,6 +17,7 @@ require("formatter").setup(
       css = {prettier},
       scss = {prettier},
       markdown = {prettier},
+      json = {prettier},
       rust = {
         function()
           return {

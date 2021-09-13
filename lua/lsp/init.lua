@@ -1,5 +1,5 @@
 require("lsp.lsp")
 require("lsp.lspsaga")
-require("lsp.lspinstall")
 require("lsp.formatter")
+require("lsp.lspinstall")
 require("lsp.cmp")
