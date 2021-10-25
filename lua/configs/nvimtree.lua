@@ -1,49 +1,58 @@
-local g = vim.g
-
-local config = {
-  side = "right",
-  width = 30,
-  show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-    tree_width = 30
-  },
-  ignore = {".git", "coverage", "node_modules", ".cache"},
-  auto_open = 1,
-  auto_close = 1,
-  quit_on_open = 0,
-  follow = 1,
-  hide_dotfiles = 0,
-  git_hl = 1,
-  root_folder_modifier = ":t",
-  tab_open = 0,
-  allow_resize = 1,
-  lsp_diagnostics = 1,
-  auto_ignore_ft = {"startify", "dashboard"},
-  icons = {
-    default = "",
-    symlink = "",
-    git = {
-      unstaged = "",
-      staged = "S",
-      unmerged = "",
-      renamed = "➜",
-      deleted = "",
-      untracked = "U",
-      ignored = "◌"
+require "nvim-tree".setup(
+  {
+    disable_netrw = true,
+    hijack_netrw = true,
+    open_on_setup = true,
+    ignore_ft_on_setup = {},
+    auto_close = true,
+    open_on_tab = true,
+    update_to_buf_dir = {
+      enable = true,
+      auto_open = true
     },
-    folder = {
-      default = "",
-      open = "",
-      empty = "",
-      empty_open = "",
-      symlink = ""
+    hijack_cursor = false,
+    update_cwd = false,
+    diagnostics = {
+      enable = true,
+      icons = {
+        hint = "",
+        info = "",
+        warning = "",
+        error = ""
+      }
+    },
+    git = {
+      enable = true,
+      icons = {
+        unstaged = "",
+        staged = "S",
+        unmerged = "",
+        renamed = "➜",
+        deleted = "",
+        untracked = "U",
+        ignored = "◌"
+      }
+    },
+    update_focused_file = {
+      enable = false,
+      update_cwd = false,
+      ignore_list = {}
+    },
+    system_open = {
+      cmd = nil,
+      args = {}
+    },
+    ignore = {".git", "coverage", "node_modules", ".cache"},
+    view = {
+      width = 30,
+      height = 30,
+      side = "right",
+      allow_resize = true,
+      auto_resize = true,
+      mappings = {
+        custom_only = false,
+        list = {}
+      }
     }
   }
-}
-
-for opt, val in pairs(config) do
-  g["nvim_tree_" .. opt] = val
-end
+)

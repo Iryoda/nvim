@@ -1,6 +1,6 @@
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
- if opts then
+  if opts then
     options = vim.tbl_extend("force", options, opts)
   end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
@@ -41,3 +41,6 @@ map("n", "<leader>f", ":Format<CR>")
 map("n", "<C-e>", ":NvimTreeToggle<CR>")
 map("n", "<Leader>r", ":NvimTreeRefresh<CR>")
 map("n", "<Leader>n", ":NvimTreeFindFile<CR>")
+
+-- Stop Nvim
+map("n", "<Leader>z", ":stop<CR>")
