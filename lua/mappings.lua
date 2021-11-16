@@ -30,16 +30,15 @@ map("n", "<c-l>", "<c-w>l")
 map("n", "<esc>", ":noh<cr><esc>", {silent = true})
 
 --Select all file
-map("n", "<c-a>", "ggVG<c-$>")
+-- map("n", "<c-a>", "ggVG<c-$>")
 
 -- Tab to switch buffers in Normal mode
 map("n", "<Tab>", ":bnext<CR>")
 map("n", "<S-Tab>", ":bprevious<CR>")
-map("n", "<leader>f", ":Format<CR>")
 
 -- NvimTree
 map("n", "<C-e>", ":NvimTreeToggle<CR>")
-map("n", "<Leader>r", ":NvimTreeRefresh<CR>")
+map("n", "<Leader>tr", ":NvimTreeRefresh<CR>")
 map("n", "<Leader>n", ":NvimTreeFindFile<CR>")
 
 -- Stop Nvim

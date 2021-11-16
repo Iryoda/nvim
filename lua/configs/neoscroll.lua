@@ -7,7 +7,6 @@ require("neoscroll").setup(
       "<C-b>",
       "<C-f>",
       "<C-y>",
-      "<C-e>",
       "zt",
       "zz",
       "zb"

@@ -29,7 +29,7 @@ return require("packer").startup(
 
     use "L3MON4D3/LuaSnip"
 
-    use "glepnir/lspsaga.nvim"
+    use "tami5/lspsaga.nvim"
 
     use "jalvesaq/Nvim-R"
 

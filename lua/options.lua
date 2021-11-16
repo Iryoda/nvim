@@ -24,7 +24,7 @@ opt.expandtab = true
 
 opt.hidden = true
 opt.backup = false
-opt.wrap = true
+opt.wrap = false
 
 opt.formatoptions = "l"
 opt.scrolloff = 8
