@@ -1,11 +1,11 @@
 local opt = vim.opt
+vim.cmd [[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]]
 
 opt.wildignore = "__pycache__"
 opt.wildignore = opt.wildignore + {"*.o", "*~", "*.pyc", "*pycache*"}
 
 opt.termguicolors = true
 opt.modifiable = true
-
 opt.backspace = {"indent", "eol", "start"}
 opt.number = true
 opt.syntax = "on"

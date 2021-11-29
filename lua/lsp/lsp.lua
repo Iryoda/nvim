@@ -33,8 +33,8 @@ local on_attach = function(_, bufnr)
 
 --- In lsp attach function
 
-  buf_set_keymap("n", "<Leader>r", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true}) 
-  buf_set_keymap("x", "ga", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
+  buf_set_keymap("n", "<Leader>r", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
+  buf_set_keymap('n', '<space>ca', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", {silent = true, noremap=true})
   buf_set_keymap("n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
   buf_set_keymap("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<cr>", {silent = true, noremap = true})
   buf_set_keymap("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", {silent = true, noremap = true})

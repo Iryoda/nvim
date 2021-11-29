@@ -18,6 +18,10 @@ return require("packer").startup(
 
     use "neovim/nvim-lspconfig"
 
+    use "onsails/lspkind-nvim"
+
+    use "styled-components/vim-styled-components"
+
     use {
       "hrsh7th/nvim-cmp",
       requires = {
@@ -32,6 +36,8 @@ return require("packer").startup(
     use "tami5/lspsaga.nvim"
 
     use "jalvesaq/Nvim-R"
+
+    use "pantharshit00/vim-prisma"
 
     use "kabouzeid/nvim-lspinstall"
 
