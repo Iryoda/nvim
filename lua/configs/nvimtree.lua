@@ -13,13 +13,13 @@ require "nvim-tree".setup(
     hijack_cursor = false,
     update_cwd = false,
     diagnostics = {
-      enable = true,
-      icons = {
-        hint = "",
-        info = "",
-        warning = "",
-        error = ""
-      }
+    enable = true,
+    icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+     },
     },
     git = {
       enable = true,
@@ -35,7 +35,7 @@ require "nvim-tree".setup(
     },
     update_focused_file = {
       enable = true,
-      update_cwd = false,
+      update_cwd = true,
       ignore_list = {}
     },
     system_open = {
@@ -56,3 +56,5 @@ require "nvim-tree".setup(
     }
   }
 )
+
+vim.g.nvim_tree_git_hl = 1

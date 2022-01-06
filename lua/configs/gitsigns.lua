@@ -2,7 +2,7 @@ require("gitsigns").setup {
   signs = {
     add = {
       hl = "GitSignsAdd",
-      text = "|",
+      text = "+",
       numhl = "GitSignsAddNr",
       linehl = "GitSignsAddLn"
     },
@@ -33,6 +33,7 @@ require("gitsigns").setup {
   },
   numhl = false,
   linehl = false,
+  current_line_blame = true,
   keymaps = {
     -- Default keymap options
     noremap = true,

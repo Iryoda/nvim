@@ -1,6 +1,7 @@
 local opt = vim.opt
 vim.cmd [[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]]
 
+opt.mouse="a"
 opt.wildignore = "__pycache__"
 opt.wildignore = opt.wildignore + {"*.o", "*~", "*.pyc", "*pycache*"}
 

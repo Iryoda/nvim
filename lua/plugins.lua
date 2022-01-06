@@ -4,83 +4,71 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
-  execute "packadd packer.nvim"
+	fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
+	execute("packadd packer.nvim")
 end
 
-return require("packer").startup(
-  function()
-    use "wbthomason/packer.nvim"
+return require("packer").startup(function()
+	use("wbthomason/packer.nvim")
+	-- Utils
+	use("karb94/neoscroll.nvim")
+	use("pantharshit00/vim-prisma")
+	use("jiangmiao/auto-pairs")
+	use("tree-sitter/tree-sitter")
+	use("terrortylor/nvim-comment")
 
-    use 'karb94/neoscroll.nvim'
+	-- Theme
+	use("folke/tokyonight.nvim")
 
-    use "folke/tokyonight.nvim"
+	-- LSP
+	use("neovim/nvim-lspconfig")
+	use("onsails/lspkind-nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("tami5/lspsaga.nvim")
+	use("williamboman/nvim-lsp-installer")
+	use("L3MON4D3/LuaSnip")
 
-    use "neovim/nvim-lspconfig"
+	-- COMP
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"saadparwaiz1/cmp_luasnip",
+		},
+	})
 
-    use "onsails/lspkind-nvim"
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 
-    use "styled-components/vim-styled-components"
+	use({
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	})
 
-    use {
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip"
-      }
-    }
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
 
-    use "L3MON4D3/LuaSnip"
+	use({
+		"hoob3rt/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
-    use "tami5/lspsaga.nvim"
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+	})
 
-    use "jalvesaq/Nvim-R"
-
-    use "pantharshit00/vim-prisma"
-
-    use "kabouzeid/nvim-lspinstall"
-
-    use "jiangmiao/auto-pairs"
-
-    use "tree-sitter/tree-sitter"
-
-    use "terrortylor/nvim-comment"
-
-    use "mhartington/formatter.nvim"
-
-    use {
-      "kyazdani42/nvim-tree.lua",
-      requires = "kyazdani42/nvim-web-devicons"
-    }
-
-    use {
-      "windwp/nvim-ts-autotag",
-      config = function()
-        require("nvim-ts-autotag").setup()
-      end
-    }
-
-    use {
-      "lewis6991/gitsigns.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim"
-      }
-    }
-
-    use {
-      "hoob3rt/lualine.nvim",
-      requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    }
-
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
-    }
-
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate"
-    }
-  end
-)
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
+end)

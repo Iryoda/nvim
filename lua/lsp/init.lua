@@ -1,6 +1,4 @@
 require("lsp.lsp")
-require("lsp.lspsaga")
-require("lsp.formatter")
-require("lsp.lspinstall")
-require("lsp.cmp")
+require("lsp.saga")
+require("lsp.comp")
 require("lsp.diagnostics")

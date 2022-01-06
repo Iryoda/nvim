@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap("n", "<Sapace>", "", {})
+vim.api.nvim_set_keymap("n", "<Space>", "", {})
 vim.g.mapleader = " "
 
 require("plugins")
