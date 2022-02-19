@@ -1,11 +1,8 @@
 local M = {}
-local lspconfig = require("lspconfig")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function M.on_attach(client, bufnr)
 	local function buf_set_keymap(...)
@@ -17,6 +14,10 @@ function M.on_attach(client, bufnr)
 	end
 
 	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
+	if client.name == "jsonls" then
 		client.resolved_capabilities.document_formatting = false
 	end
 
@@ -62,38 +63,10 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
 	buf_set_keymap("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
 
-	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
 
 	require("cmp_nvim_lsp").update_capabilities(capabilities)
 end
-
-local eslint = {
-	lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
-	lintIgnoreExitCode = true,
-	lintStdin = true,
-	lintFormats = {
-		"%f(%l,%c): %tarning %m",
-		"%f(%l,%c): %rror %m",
-	},
-	lintSource = "eslint",
-}
-
-require("lspconfig").efm.setup({
-	root_dir = lspconfig.util.root_pattern("yarn.lock", "lerna.json", ".git", "mix.exs"),
-	on_attach = M.on_attach,
-	capabilities = M.capabilities,
-	init_options = { documentFormatting = false },
-	settings = {
-		rootMarkers = { ".git/" },
-		languages = {
-			typescript = { eslint },
-			javascript = { eslint },
-			typescriptreact = { eslint },
-			javascriptreact = { eslint },
-			json = { eslint },
-		},
-	},
-})
 
 local servers = require("lsp.servers")
 

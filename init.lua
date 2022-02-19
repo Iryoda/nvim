@@ -7,4 +7,3 @@ require("config")
 require("lsp")
 require("mappings")
 require("colorscheme")
-

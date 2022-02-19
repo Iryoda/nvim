@@ -10,39 +10,12 @@ end
 
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
+
 	-- Utils
 	use("karb94/neoscroll.nvim")
-	use("pantharshit00/vim-prisma")
 	use("jiangmiao/auto-pairs")
 	use("tree-sitter/tree-sitter")
 	use("terrortylor/nvim-comment")
-
-	-- Theme
-	use("folke/tokyonight.nvim")
-
-	-- LSP
-	use("neovim/nvim-lspconfig")
-	use("onsails/lspkind-nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("tami5/lspsaga.nvim")
-	use("williamboman/nvim-lsp-installer")
-	use("L3MON4D3/LuaSnip")
-
-	-- COMP
-	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"saadparwaiz1/cmp_luasnip",
-		},
-	})
-
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
-
 	use({
 		"windwp/nvim-ts-autotag",
 		config = function()
@@ -50,11 +23,46 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- Theme
+	use("folke/tokyonight.nvim")
+	use("marko-cerovac/material.nvim")
+
+	-- LSP
+	use("neovim/nvim-lspconfig")
+	use("onsails/lspkind-nvim")
+	use("tami5/lspsaga.nvim")
+	use("williamboman/nvim-lsp-installer")
+	use("L3MON4D3/LuaSnip")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
+
+	-- COMP
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+		},
+	})
+
+	-- GIT
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+	})
+
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = "kyazdani42/nvim-web-devicons",
 	})
 
 	use({
@@ -65,10 +73,5 @@ return require("packer").startup(function()
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
-
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
 	})
 end)

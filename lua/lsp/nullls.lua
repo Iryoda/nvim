@@ -7,11 +7,13 @@ function M.setup()
 
 	null_ls.setup({
 		sources = {
+			null_ls.builtins.diagnostics.eslint.with({
+				only_local = "node_modules/.bin",
+			}),
+
 			formatting.stylua,
 			formatting.prettier,
 			formatting.rustfmt,
-			formatting.clang_format,
-			formatting.prismaFmt,
 
 			diagnostics.eslint,
 			diagnostics.credo,

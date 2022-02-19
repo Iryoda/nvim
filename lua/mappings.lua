@@ -1,9 +1,9 @@
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Better Command
@@ -27,7 +27,7 @@ map("n", "<c-k>", "<c-w>k")
 map("n", "<c-l>", "<c-w>l")
 
 --After searching, pressing escape stops the highlight
-map("n", "<esc>", ":noh<cr><esc>", {silent = true})
+map("n", "<esc>", ":noh<cr><esc>", { silent = true })
 
 --Select all file
 -- map("n", "<c-a>", "ggVG<c-$>")
