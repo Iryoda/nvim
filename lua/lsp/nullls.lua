@@ -7,16 +7,16 @@ function M.setup()
 
 	null_ls.setup({
 		sources = {
-			null_ls.builtins.diagnostics.eslint.with({
-				only_local = "node_modules/.bin",
-			}),
 
 			formatting.stylua,
 			formatting.prettier,
 			formatting.rustfmt,
+			formatting.black,
 
-			diagnostics.eslint,
 			diagnostics.credo,
+			diagnostics.eslint_d.with({
+				only_local = "node_modules/.bin",
+			}),
 
 			null_ls.builtins.completion.spell,
 		},

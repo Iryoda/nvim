@@ -3,7 +3,6 @@ local M = {}
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 function M.on_attach(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)

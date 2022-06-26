@@ -2,6 +2,7 @@ local M = {}
 
 function M.install_missing(servers)
 	local lspi_servers = require("nvim-lsp-installer.servers")
+
 	for server, _ in pairs(servers) do
 		local ok, s = lspi_servers.get_server(server)
 		if ok then

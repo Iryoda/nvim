@@ -59,7 +59,12 @@ require("telescope").setup({
 	},
 })
 
-keymap("n", "<leader>ff", [[<Cmd>lua require'telescope.builtin'.find_files()<CR>]], {})
+keymap(
+	"n",
+	"<leader>ff",
+	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+	{}
+)
 keymap("n", "<leader>fg", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], {})
 keymap("n", "<leader>fb", [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], {})
 keymap("n", "<leader>fh", [[<Cmd>lua require'telescope.builtin'.help_tags()<CR>]], {})
