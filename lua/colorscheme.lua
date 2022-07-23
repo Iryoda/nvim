@@ -13,6 +13,10 @@
 vim.g.material_style = "deep ocean"
 --
 require("material").setup({
+	contrast = {
+		floating_window = true,
+		sidebars = true,
+	},
 	italics = {
 		comments = true, -- Enable italic comments
 		keywords = true, -- Enable italic keywords
@@ -21,6 +25,7 @@ require("material").setup({
 		variables = false, -- Enable italic variables
 	},
 	disable = {
+		colored_cursor = true,
 		borders = false, -- Disable borders between verticaly split windows
 		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
 		term_colors = false, -- Prevent the theme from setting terminal colors

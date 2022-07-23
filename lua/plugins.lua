@@ -24,12 +24,13 @@ return require("packer").startup(function()
 			require("nvim-ts-autotag").setup()
 		end,
 	})
-
-	-- Elixir
-	use("elixir-editors/vim-elixir")
+	-- Clojure
+	use("Olical/conjure")
+	use("tpope/vim-dispatch")
+	use("clojure-vim/vim-jack-in")
+	use("radenling/vim-dispatch-neovim")
 
 	-- Theme
-	use("folke/tokyonight.nvim")
 	use("marko-cerovac/material.nvim")
 
 	-- LSP
@@ -52,10 +53,16 @@ return require("packer").startup(function()
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/vim-vsnip",
-			"hrsh7th/vim-vsnip-integ",
+			-- "hrsh7th/vim-vsnip",
+			-- "hrsh7th/vim-vsnip-integ",
 		},
 	})
+
+	-- SNIPPETS
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("rafamadriz/friendly-snippets")
+
 	-- GIT
 	use({
 		"lewis6991/gitsigns.nvim",

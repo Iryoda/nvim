@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  conjure = {
+    loaded = true,
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/conjure",
+    url = "https://github.com/Olical/conjure"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -134,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-comment"] = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-comment",
@@ -170,6 +180,11 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
+  ["nvim-ts-rainbow"] = {
+    loaded = true,
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -205,6 +220,11 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/tree-sitter",
     url = "https://github.com/tree-sitter/tree-sitter"
   },
+  ["vim-elixir"] = {
+    loaded = true,
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/vim-elixir",
+    url = "https://github.com/elixir-editors/vim-elixir"
+  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/vim-vsnip",
@@ -227,5 +247,6 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

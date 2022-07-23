@@ -12,16 +12,24 @@ function M.on_attach(client, bufnr)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 
+	if client.name == "clojure_lsp" then
+		client.server_capabilities.document_formatting = false
+	end
+
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
+	end
+
+	if client.name == "tailwindcss" then
+		client.server_capabilities.document_formatting = false
 	end
 
 	if client.name == "jsonls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	if client.name == "rust_analyzer" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	--Enable completion triggered by <c-x><c-o>
@@ -46,7 +54,7 @@ function M.on_attach(client, bufnr)
 	-- buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	-- buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 	--- In lsp attach function
 
@@ -62,7 +70,7 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
 	buf_set_keymap("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
 
-	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+	-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 
 	require("cmp_nvim_lsp").update_capabilities(capabilities)
 end
