@@ -35,7 +35,7 @@ opt.encoding = "utf-8"
 opt.cmdheight = 2
 opt.updatetime = 40
 
-opt.clipboard = "unnamedplus"
+opt.clipboard = ""
 opt.splitright = true
 
 opt.splitbelow = true
@@ -46,4 +46,7 @@ opt.showcmd = true
 opt.showmatch = true
 opt.incsearch = true -- Shows the match while typing
 
+opt.colorcolumn = "80"
+
 opt.relativenumber = true
+opt.cmdheight = 1

@@ -40,3 +40,17 @@ map("n", "<Leader>z", ":stop<CR>")
 -- C-d and C-u stay on the middle
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+-- Better yank for more control: AKA greatest remaps ever
+-- stylua: ignore start
+map("n", "<leader>p", "\"_dP")
+
+map("n", "<leader>y", "\"+y")
+map("v", "<leader>y", "\"+y")
+map("n", "<leader>Y", "\"+Y")
+
+map("n", "<leader>d", "\"_d")
+map("v", "<leader>d", "\"_d")
+map("n", "<leader>D", "\"_D")
