@@ -5,12 +5,13 @@ if not ok then
 	return
 end
 
-local parser_config =  parses.get_parser_configs()
+local parser_config = parses.get_parser_configs()
 
 treesitter.setup({
 	highlight = {
 		enable = true,
 		use_languagetree = true,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,
@@ -92,11 +93,13 @@ treesitter.setup({
 		"c",
 		"rust",
 	},
+	context_commentstring = { enable = true, enable_autocmd = false },
 	rainbow = {
 		enable = true,
 		extended_mode = true,
-		max_file_lines = nil,
+		max_file_lines = 2000,
 	},
+	matchup = { enable = true },
 })
 
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }

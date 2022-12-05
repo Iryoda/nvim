@@ -6,8 +6,8 @@ end
 
 nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
-	disable_netrw = true,
-	hijack_cursor = false,
+	disable_netrw = false,
+	hijack_cursor = true,
 	hijack_netrw = true,
 	hijack_unnamed_buffer_when_opening = false,
 	ignore_buffer_on_setup = false,
@@ -56,6 +56,28 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 			error = "",
 		},
 	},
+	renderer = {
+		root_folder_label = ":.:s?.*?/..?",
+		indent_markers = {
+			enable = true,
+			icons = {
+				corner = "└ ",
+				edge = "│ ",
+				item = "│ ",
+				none = "  ",
+			},
+		},
+		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = false,
+				git = true,
+			},
+			padding = " ",
+			symlink_arrow = "  ",
+		},
+	},
 	filters = {
 		dotfiles = false,
 		custom = {},
@@ -67,6 +89,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		timeout = 400,
 	},
 	actions = {
+		use_system_clipboard = true,
 		change_dir = {
 			enable = false,
 			global = false,
