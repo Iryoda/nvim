@@ -1,4 +1,13 @@
-require("nvim-treesitter.configs").setup({
+local _, treesitter = pcall(require, "nvim-treesitter.configs")
+local ok, parses = pcall(require, "nvim-treesitter.parsers")
+
+if not ok then
+	return
+end
+
+local parser_config =  parses.get_parser_configs()
+
+treesitter.setup({
 	highlight = {
 		enable = true,
 		use_languagetree = true,
@@ -89,7 +98,5 @@ require("nvim-treesitter.configs").setup({
 		max_file_lines = nil,
 	},
 })
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }

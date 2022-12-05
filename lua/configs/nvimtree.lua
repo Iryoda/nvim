@@ -1,4 +1,10 @@
-require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
+local ok, nvimtree = pcall(require, "nvim-tree")
+
+if not ok then
+	return
+end
+
+nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	disable_netrw = true,
 	hijack_cursor = false,
@@ -10,8 +16,6 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 	sort_by = "name",
 	update_cwd = false,
 	view = {
-		width = 30,
-		height = 30,
 		side = "right",
 		preserve_window_proportions = false,
 		number = false,
@@ -37,8 +41,14 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		args = {},
 	},
 	diagnostics = {
-		enable = true,
+		enable = false,
 		show_on_dirs = false,
+		show_on_open_dirs = true,
+		debounce_delay = 50,
+		severity = {
+			min = vim.diagnostic.severity.HINT,
+			max = vim.diagnostic.severity.ERROR,
+		},
 		icons = {
 			hint = "",
 			info = "",
@@ -88,69 +98,3 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		},
 	},
 })
-
--- require "nvim-tree".setup(
---   {
---     disable_netrw = true,
---     hijack_netrw = true,
---     open_on_setup = true,
---     ignore_ft_on_setup = {},
---     auto_close = true,
---     open_on_tab = true,
---     update_to_buf_dir = {
---       enable = true,
---       auto_open = true
---     },
---     hijack_cursor = false,
---     update_cwd = false,
---     diagnostics = {
---     enable = true,
---     icons = {
---           hint = "",
---           info = "",
---           warning = "",
---           error = "",
---      },
---     },
---     git = {
---       enable = true,
---       icons = {
---         unstaged = "",
---         staged = "S",
---         unmerged = "",
---         renamed = "➜",
---         deleted = "",
---         untracked = "U",
---         ignored = "◌"
---       }
---     },
---     update_focused_file = {
---       enable = true,
---       update_cwd = true,
---       ignore_list = {}
---     },
---     system_open = {
---       cmd = nil,
---       args = {}
---     },
---     ignore = {".git", "coverage", "node_modules", ".cache"},
---     view = {
---       width = 30,
---       height = 30,
---       side = "right",
---       allow_resize = true,
---       auto_resize = true,
---       mappings = {
---         custom_only = false,
---         list = {}
---       }
---     }
---   }
--- )
---
--- vim.g.nvim_tree_git_hl = 1
---
---
---
---
---

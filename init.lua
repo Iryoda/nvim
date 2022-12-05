@@ -9,4 +9,4 @@ require("lsp")
 require("mappings")
 require("colorscheme")
 
--- vim.g.highlight("rainbowcol1", "#89DDFF")
+vim.cmd([[hi rainbowcol1 guifg=#84FFFF]])

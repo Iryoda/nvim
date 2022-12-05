@@ -12,17 +12,49 @@
 
 vim.g.material_style = "deep ocean"
 --
-require("material").setup({
+
+local ok, material = pcall(require, "material")
+
+if not ok then
+	return
+end
+
+material.setup({
 	contrast = {
-		floating_window = true,
-		sidebars = true,
+		floating_window = false,
+		sidebars = false,
+		non_current_window = true,
 	},
-	italics = {
-		comments = true, -- Enable italic comments
-		keywords = true, -- Enable italic keywords
-		functions = true, -- Enable italic functions
-		strings = false, -- Enable italic strings
-		variables = false, -- Enable italic variables
+	plugins = { -- Uncomment the plugins that you use to highlight them
+		-- Available plugins:
+		-- "dap",
+		-- "dashboard",
+		"gitsigns",
+		-- "hop",
+		-- "indent-blankline",
+		"lspsaga",
+		-- "mini",
+		-- "neogit",
+		"nvim-cmp",
+		-- "nvim-navic",
+		"nvim-tree",
+		"nvim-web-devicons",
+		-- "sneak",
+		"telescope",
+		-- "trouble",
+		-- "which-key",
+	},
+	styles = { -- Give comments style such as bold, italic, underline etc.
+		comments = { italic = true },
+		keywords = { italic = true },
+		functions = { italic = true },
+		strings = {},
+		variables = {},
+		operators = {},
+		types = {},
+	},
+	high_visibility = {
+		darker = true, -- Enable higher contrast text for darker style
 	},
 	disable = {
 		colored_cursor = true,
@@ -31,6 +63,7 @@ require("material").setup({
 		term_colors = false, -- Prevent the theme from setting terminal colors
 		eob_lines = false, -- Hide the end-of-buffer lines
 	},
+	-- lualine_style = "stealth",
 })
 
 vim.cmd([[colorscheme material]])

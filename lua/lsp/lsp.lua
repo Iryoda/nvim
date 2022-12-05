@@ -1,6 +1,6 @@
 local M = {}
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 function M.on_attach(client, bufnr)
@@ -39,8 +39,8 @@ function M.on_attach(client, bufnr)
 	local opts = { noremap = true, silent = true }
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
@@ -57,7 +57,6 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 	--- In lsp attach function
-
 	buf_set_keymap("n", "<Leader>r", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
 	buf_set_keymap(
 		"n",
@@ -66,13 +65,15 @@ function M.on_attach(client, bufnr)
 		{ silent = true, noremap = true }
 	)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", { silent = true, noremap = true })
-	buf_set_keymap("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<cr>", { silent = true, noremap = true })
 	buf_set_keymap("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, noremap = true })
-	buf_set_keymap("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, noremap = true })
+	buf_set_keymap("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true, noremap = true })
+	buf_set_keymap("n", "<Leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true, noremap = true })
+	buf_set_keymap("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+	buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 	-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 
-	require("cmp_nvim_lsp").update_capabilities(capabilities)
+	require("cmp_nvim_lsp").default_capabilities(capabilities)
 end
 
 local servers = require("lsp.servers")

@@ -1,4 +1,10 @@
-require("lspkind").init({
+local ok, kind = pcall(require, "lspkind")
+
+if not ok then
+	return
+end
+
+kind.init({
 	-- DEPRECATED (use mode instead): enables text annotations
 	--
 	-- default: true

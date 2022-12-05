@@ -14,7 +14,6 @@ return require("packer").startup(function()
 	-- Utils
 	use("p00f/nvim-ts-rainbow")
 	use("norcalli/nvim-colorizer.lua")
-	use("karb94/neoscroll.nvim")
 	use("jiangmiao/auto-pairs")
 	use("tree-sitter/tree-sitter")
 	use("terrortylor/nvim-comment")
@@ -24,6 +23,7 @@ return require("packer").startup(function()
 			require("nvim-ts-autotag").setup()
 		end,
 	})
+
 	-- Clojure
 	use("Olical/conjure")
 	use("tpope/vim-dispatch")
@@ -36,7 +36,7 @@ return require("packer").startup(function()
 	-- LSP
 	use("neovim/nvim-lspconfig")
 	use("onsails/lspkind-nvim")
-	use("tami5/lspsaga.nvim")
+	use("glepnir/lspsaga.nvim")
 	use("williamboman/nvim-lsp-installer")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")

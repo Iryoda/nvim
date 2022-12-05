@@ -33,7 +33,7 @@ opt.scrolloff = 8
 
 opt.encoding = "utf-8"
 opt.cmdheight = 2
-opt.updatetime = 300
+opt.updatetime = 40
 
 opt.clipboard = "unnamedplus"
 opt.splitright = true
@@ -45,3 +45,5 @@ opt.showmode = false
 opt.showcmd = true
 opt.showmatch = true
 opt.incsearch = true -- Shows the match while typing
+
+opt.relativenumber = true

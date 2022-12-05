@@ -1,4 +1,9 @@
-local lspkind = require("lspkind")
+local ok, kind = pcall(require, "lspkind")
+
+if not ok then
+	return
+end
+
 local cmp = require("cmp")
 
 local has_words_before = function()
@@ -6,15 +11,27 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local feedkey = function(key, mode)
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
+local source_names = {
+	nvim_lsp = "[LSP]",
+	path = "[Path]",
+	luasnip = "[Snippet]",
+	buffer = "[Buffer]",
+	tmux = "[TMUX]",
+	treesitter = "[TreeSitter]",
+}
 
 cmp.setup({
 	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true, -- do not show text alongside icons
+		fields = { "kind", "abbr", "menu" },
+		format = kind.cmp_format({
+			mode = "symbol", -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+			before = function(entry, vim_item)
+				vim_item.menu = source_names[entry.source.name]
+				return vim_item
+			end,
 		}),
 	},
 	snippet = {
@@ -49,21 +66,24 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	},
-
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	},
-	{ name = "buffer" },
+	{
+		{ name = "buffer" },
+	},
 })
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "buffer" },
 	},
 })
 
 cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {

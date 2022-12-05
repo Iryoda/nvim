@@ -1,5 +1,9 @@
-local actions = require("telescope.actions")
+local ok, actions = pcall(require, "telescope.actions")
 local keymap = vim.api.nvim_set_keymap
+
+if not ok then
+	return
+end
 
 require("telescope").setup({
 	defaults = {
