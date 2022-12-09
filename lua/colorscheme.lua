@@ -1,69 +1,90 @@
--- vim.g.tokyonight_style = "storm"
--- vim.g.tokyonight_italic_functions = true
--- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
--- vim.g.tokyonight_transparent = false
--- vim.g.tokyonight_transparent_sidebar = true
--- vim.g.terminal_colors = false
--- -- Change the "hint" color to the "orange" color, and make the "error" color bright red
--- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
---
--- -- Load the colorscheme
--- vim.cmd([[colorscheme tokyonight]])
-
-vim.g.material_style = "deep ocean"
---
-
-local ok, material = pcall(require, "material")
-
-if not ok then
-	return
-end
-
-material.setup({
-	contrast = {
-		floating_window = false,
-		sidebars = false,
-		non_current_window = true,
+-- CATPPUCIN
+require("catppuccin").setup({
+	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	transparent_background = false,
+	term_colors = false,
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
 	},
-	plugins = { -- Uncomment the plugins that you use to highlight them
-		-- Available plugins:
-		-- "dap",
-		-- "dashboard",
-		"gitsigns",
-		-- "hop",
-		-- "indent-blankline",
-		"lspsaga",
-		-- "mini",
-		-- "neogit",
-		"nvim-cmp",
-		-- "nvim-navic",
-		"nvim-tree",
-		"nvim-web-devicons",
-		-- "sneak",
-		"telescope",
-		-- "trouble",
-		-- "which-key",
-	},
-	styles = { -- Give comments style such as bold, italic, underline etc.
-		comments = { italic = true },
-		keywords = { italic = true },
-		functions = { italic = true },
+	no_italic = false, -- Force no italic
+	no_bold = false, -- Force no bold
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+		functions = { "italic" },
+		variables = { "italic" },
+		booleans = { "bold" },
+		loops = {},
+		keywords = {},
 		strings = {},
-		variables = {},
-		operators = {},
+		numbers = {},
+		properties = {},
 		types = {},
+		operators = {},
 	},
-	high_visibility = {
-		darker = true, -- Enable higher contrast text for darker style
+	native_lsp = {
+		enabled = true,
+		virtual_text = {
+			errors = { "italic" },
+			hints = { "italic" },
+			warnings = { "italic" },
+			information = { "italic" },
+		},
+		underlines = {
+			errors = { "underline" },
+			hints = { "underline" },
+			warnings = { "underline" },
+			information = { "underline" },
+		},
 	},
-	disable = {
-		colored_cursor = true,
-		borders = false, -- Disable borders between verticaly split windows
-		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
-		term_colors = false, -- Prevent the theme from setting terminal colors
-		eob_lines = false, -- Hide the end-of-buffer lines
+	color_overrides = {},
+
+	integrations = {
+		treesitter = true,
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		telescope = true,
+		ts_rainbow = true,
+		lsp_saga = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
 	},
-	-- lualine_style = "stealth",
+	custom_highlights = function(cp)
+		return {
+			-- For native lsp configs.
+			LspFloatWinNormal = { bg = cp.base },
+			DiagnosticVirtualTextError = { bg = cp.none },
+			DiagnosticVirtualTextWarn = { bg = cp.none },
+			DiagnosticVirtualTextInfo = { bg = cp.none },
+			DiagnosticVirtualTextHint = { fg = cp.rosewater, bg = cp.none },
+
+			-- ["@variable"] = { fg = cp.text },
+			-- ["@field"] = { fg = cp.rosewater },
+			-- ["@property"] = { fg = cp.yellow },
+			-- ["@include"] = { fg = cp.teal },
+
+			["@tag.attribute"] = { fg = cp.mauve, style = { "italic" } },
+			["@tag"] = { fg = cp.blue },
+			["@tag.delimiter"] = { fg = cp.maroon },
+		}
+	end,
 })
 
-vim.cmd([[colorscheme material]])
+-- setup must be called before loading
+vim.cmd.colorscheme("catppuccin")

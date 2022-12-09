@@ -17,7 +17,7 @@ map("n", "L", "$")
 -- Better Save methods
 map("n", "<c-s>", ":up<CR>")
 map("i", "<c-s>", "<ESC>:up<CR>a")
-map("n", "<Leader>w", "up<CR>")
+map("n", "<Leader>w", ":up<CR>")
 
 -- User <c-Key> to change the buffer when split
 map("n", "<c-j>", "<c-w>j")
@@ -45,7 +45,7 @@ map("n", "N", "Nzzzv")
 
 -- Better yank for more control: AKA greatest remaps ever
 -- stylua: ignore start
-map("n", "<leader>p", "\"_dP")
+map("n", "<leader>p", "_dP")
 
 map("n", "<leader>y", "\"+y")
 map("v", "<leader>y", "\"+y")

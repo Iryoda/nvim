@@ -10,7 +10,6 @@ local parser_config = parses.get_parser_configs()
 treesitter.setup({
 	highlight = {
 		enable = true,
-		use_languagetree = true,
 		additional_vim_regex_highlighting = false,
 	},
 	indent = {

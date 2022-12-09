@@ -31,7 +31,8 @@ return require("packer").startup(function()
 	use("radenling/vim-dispatch-neovim")
 
 	-- Theme
-	use("marko-cerovac/material.nvim")
+	-- use("marko-cerovac/material.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- LSP
 	use("neovim/nvim-lspconfig")

@@ -41,7 +41,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		args = {},
 	},
 	diagnostics = {
-		enable = false,
+		enable = true,
 		show_on_dirs = false,
 		show_on_open_dirs = true,
 		debounce_delay = 50,
@@ -58,6 +58,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	},
 	renderer = {
 		root_folder_label = ":.:s?.*?/..?",
+		highlight_opened_files = "none",
 		indent_markers = {
 			enable = true,
 			icons = {
