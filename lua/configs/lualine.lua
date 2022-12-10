@@ -34,10 +34,13 @@ lualine.setup({
 	winbar = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { { "filetype", icon_only = true, separator = "", padding = { left = "1" } }, "filename" },
+		lualine_c = {
+			{ "filetype", icon_only = true, separator = "", padding = { left = "1" } },
+			"filename",
+		},
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = {},
+		lualine_Z = {},
 	},
 	inactive_winbar = {
 		lualine_a = {},
