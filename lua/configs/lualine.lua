@@ -17,7 +17,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
-		lualine_c = { "filename" },
+		lualine_c = { { "filename", path = 1 } },
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
@@ -34,7 +34,7 @@ lualine.setup({
 	winbar = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_c = { { "filetype", icon_only = true, separator = "", padding = { left = "1" } }, "filename" },
 		lualine_x = {},
 		lualine_y = {},
 		lualine_z = {},
@@ -42,10 +42,14 @@ lualine.setup({
 	inactive_winbar = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_c = {
+			{ "filetype", colored = false, icon_only = true, separator = "", padding = { left = "1" } },
+			"filename",
+		},
 		lualine_x = {},
 		lualine_y = {},
 		lualine_z = {},
 	},
+
 	extensions = {},
 })
