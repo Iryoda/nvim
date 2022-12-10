@@ -1,6 +1,6 @@
 -- CATPPUCIN
 require("catppuccin").setup({
-	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
 	transparent_background = false,
 	term_colors = false,
 	dim_inactive = {
@@ -73,11 +73,6 @@ require("catppuccin").setup({
 			DiagnosticVirtualTextWarn = { bg = cp.none },
 			DiagnosticVirtualTextInfo = { bg = cp.none },
 			DiagnosticVirtualTextHint = { fg = cp.rosewater, bg = cp.none },
-
-			-- ["@variable"] = { fg = cp.text },
-			-- ["@field"] = { fg = cp.rosewater },
-			-- ["@property"] = { fg = cp.yellow },
-			-- ["@include"] = { fg = cp.teal },
 
 			["@tag.attribute"] = { fg = cp.mauve, style = { "italic" } },
 			["@tag"] = { fg = cp.blue },
