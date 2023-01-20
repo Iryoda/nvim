@@ -40,7 +40,7 @@ lualine.setup({
 		},
 		lualine_x = {},
 		lualine_y = {},
-		lualine_Z = {},
+		lualine_z = {},
 	},
 	inactive_winbar = {
 		lualine_a = {},

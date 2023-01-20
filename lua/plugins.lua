@@ -11,11 +11,55 @@ end
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
+	-- Clojure
+	use("Olical/conjure")
+	use("tpope/vim-dispatch")
+	use("clojure-vim/vim-jack-in")
+	use("radenling/vim-dispatch-neovim")
+
+	-- LSP
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	})
+
+	-- nullls
+	use({
+		"jayp0521/mason-null-ls.nvim",
+		requires = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+	})
+
+	-- treesitter
+	use("tree-sitter/tree-sitter")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 	-- Utils
 	use("p00f/nvim-ts-rainbow")
 	use("norcalli/nvim-colorizer.lua")
 	use("jiangmiao/auto-pairs")
-	use("tree-sitter/tree-sitter")
+
 	use("terrortylor/nvim-comment")
 	use({
 		"windwp/nvim-ts-autotag",
@@ -24,45 +68,13 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Clojure
-	use("Olical/conjure")
-	use("tpope/vim-dispatch")
-	use("clojure-vim/vim-jack-in")
-	use("radenling/vim-dispatch-neovim")
-
 	-- Theme
 	-- use("marko-cerovac/material.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- LSP
-	use("neovim/nvim-lspconfig")
 	use("onsails/lspkind-nvim")
 	use("glepnir/lspsaga.nvim")
-	use("williamboman/nvim-lsp-installer")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-
-	-- COMP
-	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			-- "hrsh7th/vim-vsnip",
-			-- "hrsh7th/vim-vsnip-integ",
-		},
-	})
-
-	-- SNIPPETS
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
-	use("rafamadriz/friendly-snippets")
 
 	-- GIT
 	use({

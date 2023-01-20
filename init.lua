@@ -5,7 +5,8 @@ vim.g.maplocalleader = ","
 require("plugins")
 require("options")
 require("config")
-require("lsp")
+require("new_lsp")
+-- require("lsp")
 require("mappings")
 require("colorscheme")
 

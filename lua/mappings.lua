@@ -15,9 +15,8 @@ map("n", "H", "^")
 map("n", "L", "$")
 
 -- Better Save methods
-map("n", "<c-s>", ":up<CR>")
-map("i", "<c-s>", "<ESC>:up<CR>a")
-map("n", "<Leader>w", ":up<CR>")
+vim.keymap.set({ 'n', 'i' }, '<c-s>', '<cmd>update<cr>', { silent = true })
+vim.keymap.set('v', '<c-s>', '<cmd>update<cr>gv', { silent = true })
 
 -- User <c-Key> to change the buffer when split
 map("n", "<c-j>", "<c-w>j")
