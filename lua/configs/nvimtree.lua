@@ -4,27 +4,34 @@ if not ok then
 	return
 end
 
+local function my_on_attach(bufnr)
+	local api = require("nvim-tree.api")
+
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	end
+
+	api.config.mappings.default_on_attach(bufnr)
+
+	vim.keymap.set("n", "<C-e>", api.tree.toggle, opts("Open: In Place"))
+end
+
 nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	disable_netrw = false,
 	hijack_cursor = true,
 	hijack_netrw = true,
 	hijack_unnamed_buffer_when_opening = false,
-	ignore_buffer_on_setup = false,
-	open_on_setup = false,
 	open_on_tab = false,
 	sort_by = "name",
 	update_cwd = false,
+	on_attach = my_on_attach,
 	view = {
 		side = "right",
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = false,
 		signcolumn = "yes",
-		mappings = {
-			custom_only = false,
-			list = { { key = "<C-e>", action = "close" } },
-		},
 	},
 	hijack_directories = {
 		enable = true,
@@ -35,7 +42,6 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		update_cwd = true,
 		ignore_list = {},
 	},
-	ignore_ft_on_setup = {},
 	system_open = {
 		cmd = nil,
 		args = {},
@@ -92,7 +98,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	actions = {
 		use_system_clipboard = true,
 		change_dir = {
-			enable = false,
+			enable = true,
 			global = false,
 		},
 		open_file = {

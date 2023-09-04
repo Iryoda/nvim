@@ -12,10 +12,10 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Clojure
-	use("Olical/conjure")
-	use("tpope/vim-dispatch")
-	use("clojure-vim/vim-jack-in")
-	use("radenling/vim-dispatch-neovim")
+	-- use("Olical/conjure")
+	-- use("tpope/vim-dispatch")
+	-- use("clojure-vim/vim-jack-in")
+	-- use("radenling/vim-dispatch-neovim")
 
 	-- LSP
 	use({
@@ -30,9 +30,9 @@ return require("packer").startup(function()
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
+			{ "saadparwaiz1/cmp_luasnip" },
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },

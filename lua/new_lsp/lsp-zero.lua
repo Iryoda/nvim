@@ -4,10 +4,13 @@ if not ok then
 	return
 end
 
-lsp.preset("lsp-compe")
+lsp.preset({
+	manage_nvim_cmp = {
+		set_sources = "minimal",
+	},
+})
 
 lsp.ensure_installed({
-	"sumneko_lua",
 	"elixirls",
 	"gopls",
 	"tsserver",
@@ -45,18 +48,20 @@ lsp.on_attach(function(client, bufnr)
 	bind("n", "<Leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true, noremap = true })
 	bind("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 	bind("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+
+	lsp.buffer_autoformat()
 end)
 
-lsp.configure("elixirls", {
-	settings = {
-		elixirLS = {
-			dialyzerEnabled = true,
-			fetchDeps = true,
-		},
-	},
-})
+-- lsp.configure("elixirls", {
+-- 	settings = {
+-- 		elixirLS = {
+-- 			dialyzerEnabled = true,
+-- 			fetchDeps = true,
+-- 		},
+-- 	},
+-- })
 
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
