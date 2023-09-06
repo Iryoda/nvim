@@ -1,5 +1,5 @@
-local _, lspsaga = pcall(require, "lspsaga")
-local ok, catpuccinIntegrations = pcall(require, "catppuccin.groups.integrations.lsp_saga")
+local ok, lspsaga = pcall(require, "lspsaga")
+-- local ok, catpuccinIntegrations = pcall(require, "catppuccin.groups.integrations.lsp_saga")
 
 if not ok then
 	return

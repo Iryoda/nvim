@@ -1,6 +1,6 @@
 local _, luasnip = pcall(require, "luasnip")
 local _, lsp = pcall(require, "lsp-zero")
-local _, keymap = pcall(require, "cmp.utils.keymap")
+local _, _ = pcall(require, "cmp.utils.keymap")
 local ok, kind = pcall(require, "lspkind")
 
 if not ok then

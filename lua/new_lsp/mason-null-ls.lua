@@ -1,4 +1,4 @@
-local _, mason = pcall(require, "mason")
+local _, _ = pcall(require, "mason")
 local _, null_ls = pcall(require, "null-ls")
 local ok, mason_null_ls = pcall(require, "mason-null-ls")
 
