@@ -88,3 +88,9 @@ vim.diagnostic.config({
 	severity_sort = false,
 	float = true,
 })
+
+vim.filetype.add({
+	extension = {
+		templ = "templ",
+	},
+})

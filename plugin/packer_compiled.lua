@@ -114,10 +114,10 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  conjure = {
+  ["conform.nvim"] = {
     loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/conjure",
-    url = "https://github.com/Olical/conjure"
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -154,20 +154,10 @@ _G.packer_plugins = {
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
-  ["mason-null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
-    url = "https://github.com/jayp0521/mason-null-ls.nvim"
-  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -183,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-lint"] = {
+    loaded = true,
+    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/nvim-lint",
+    url = "https://github.com/mfussenegger/nvim-lint"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -239,21 +234,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/tree-sitter",
     url = "https://github.com/tree-sitter/tree-sitter"
-  },
-  ["vim-dispatch"] = {
-    loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/vim-dispatch",
-    url = "https://github.com/tpope/vim-dispatch"
-  },
-  ["vim-dispatch-neovim"] = {
-    loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/vim-dispatch-neovim",
-    url = "https://github.com/radenling/vim-dispatch-neovim"
-  },
-  ["vim-jack-in"] = {
-    loaded = true,
-    path = "/home/augustoiryoda/.local/share/nvim/site/pack/packer/start/vim-jack-in",
-    url = "https://github.com/clojure-vim/vim-jack-in"
   }
 }
 

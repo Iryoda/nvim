@@ -40,13 +40,12 @@ return require("packer").startup(function()
 		},
 	})
 
-	-- nullls
+	-- Lint
+	use("mfussenegger/nvim-lint")
+
+	-- format
 	use({
-		"jayp0521/mason-null-ls.nvim",
-		requires = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
+		"stevearc/conform.nvim",
 	})
 
 	-- treesitter

@@ -1,76 +1,13 @@
-local ok, actions = pcall(require, "telescope.actions")
-local keymap = vim.api.nvim_set_keymap
+local _, _ = pcall(require, "telescope.actions")
+local ok, builtin = pcall(require, "telescope.builtin")
 
 if not ok then
 	return
 end
 
-require("telescope").setup({
-	defaults = {
-		mappings = {
-			i = {
-				-- To disable a keymap, put [map] = false
-				-- So, to not map "<C-n>", just put
-				-- ["<C-n>"] = false,
-				-- Otherwise, just set the mapping to the function that you want it to be.
-				["<C-i>"] = actions.select_horizontal,
-				-- Add up multiple actions
-				["<cr>"] = actions.select_default + actions.center,
-				["qq"] = actions.close,
-			},
-			n = {
-				["<esc>"] = actions.close,
-				["q"] = actions.close,
-			},
-		},
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--smart-case",
-		},
-		prompt_prefix = "> ",
-		selection_caret = "> ",
-		entry_prefix = "  ",
-		initial_mode = "insert",
-		selection_strategy = "reset",
-		sorting_strategy = "descending",
-		layout_strategy = "horizontal",
-		layout_config = {
-			horizontal = {
-				mirror = false,
-			},
-			vertical = {
-				mirror = false,
-			},
-		},
-		file_sorter = require("telescope.sorters").get_fuzzy_file,
-		file_ignore_patterns = { "node_modules", "coverage", "deps", "_build", ".elixir_ls", "cover" },
-		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-		winblend = 0,
-		border = {},
-		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-		color_devicons = true,
-		use_less = true,
-		path_display = {},
-		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-		-- Developer configurations: Not meant for general override
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-	},
-})
+require("telescope").setup()
 
-keymap(
-	"n",
-	"<leader>ff",
-	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-	{}
-)
-keymap("n", "<leader>fg", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], {})
-keymap("n", "<leader>fb", [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]], {})
-keymap("n", "<leader>fh", [[<Cmd>lua require'telescope.builtin'.help_tags()<CR>]], {})
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
