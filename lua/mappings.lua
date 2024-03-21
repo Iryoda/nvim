@@ -15,9 +15,9 @@ map("n", "H", "^")
 map("n", "L", "$")
 
 -- Better Save methods
-vim.keymap.set({ "n", "i" }, "<c-s>", "<cmd>update<cr>", { silent = true })
-vim.keymap.set("v", "<c-s>", "<cmd>update<cr>gv", { silent = true })
-vim.keymap.set("n", "<leader>s", "<cmd>update<cr>", { silent = true })
+map("n", "<c-s>", ":<c-u>update<cr>")
+map("v", "<c-s>", "<c-c>:update<cr>gv")
+map("i", "<c-s>", "<c-o>update<cr>")
 
 -- User <c-Key> to change the buffer when split
 map("n", "<c-j>", "<c-w>j")
@@ -54,3 +54,10 @@ map("n", "<leader>Y", "\"+Y")
 map("n", "<leader>d", "\"_d")
 map("v", "<leader>d", "\"_d")
 map("n", "<leader>D", "\"_D")
+
+-- Copilot
+vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', {
+      expr = true,
+      replace_keycodes = false
+    })
+    vim.g.copilot_no_tab_map = true

@@ -1,23 +1,24 @@
-local ok, lsp = pcall(require, "lsp-zero")
+local _, lspzero = pcall(require, "lsp-zero")
+local ok, lspconfig = pcall(require, "lspconfig")
 
 if not ok then
 	return
 end
 
-lsp.preset({
+lspzero.preset({
 	manage_nvim_cmp = {
 		set_sources = "minimal",
 	},
 })
 
-lsp.ensure_installed({
+lspzero.ensure_installed({
 	"elixirls",
 	"gopls",
 	"tsserver",
 	"rust_analyzer",
 })
 
-lsp.on_attach(function(client, bufnr)
+lspzero.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false, noremap = true }
 	local bind = vim.keymap.set
 
@@ -34,22 +35,16 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.format({ async = true })
 	end, opts)
 
-	--- In lsp attach function
-	bind("n", "<Leader>r", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
-	bind(
-		"n",
-		"<space>ca",
-		"<cmd>lua require('lspsaga.codeaction').code_action()<CR>",
-		{ silent = true, noremap = true }
-	)
+	bind("n", "<Leader>r", "<cmd>Lspsaga rename<CR>", { silent = true, noremap = true })
 	bind("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, noremap = true })
 	bind("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true, noremap = true })
+	bind("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, noremap = true })
 	bind("n", "<Leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true, noremap = true })
 	bind("n", "<Leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true, noremap = true })
 	bind("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 	bind("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
-	lsp.buffer_autoformat()
+	lspzero.buffer_autoformat()
 end)
 
 -- lsp.configure("elixirls", {
@@ -61,7 +56,7 @@ end)
 -- 	},
 -- })
 
-lsp.configure("lua_ls", {
+lspzero.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -79,7 +74,9 @@ lsp.configure("lua_ls", {
 	},
 })
 
-lsp.setup()
+lspzero.setup()
+
+lspconfig.gleam.setup({})
 
 vim.diagnostic.config({
 	underline = true,

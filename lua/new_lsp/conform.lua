@@ -16,7 +16,13 @@ conform.setup({
 
 		svelte = { { "prettierd", "prettier" } },
 
-		kotlin = { "klint" },
+		json = { { "prettierd", "prettier" } },
+
+		rust = { "rustfmt" },
+		gleam = { "gleamfmt" },
+		go = { "gofmt" },
+
+		-- kotlin = { "ktlint" },
 	},
 	format_on_save = {
 		lsp_fallback = true,

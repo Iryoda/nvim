@@ -10,7 +10,6 @@ nvim_lint.linters_by_ft = {
 	javascriptreact = { "eslint_d" },
 	typescriptreact = { "eslint_d" },
 	svelte = { "eslint_d" },
-	kotlin = { "klint" },
 }
 
 local augroup = vim.api.nvim_create_augroup("lint", { clear = true })

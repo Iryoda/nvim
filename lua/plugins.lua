@@ -11,12 +11,6 @@ end
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
-	-- Clojure
-	-- use("Olical/conjure")
-	-- use("tpope/vim-dispatch")
-	-- use("clojure-vim/vim-jack-in")
-	-- use("radenling/vim-dispatch-neovim")
-
 	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -40,26 +34,37 @@ return require("packer").startup(function()
 		},
 	})
 
+	-- Copilot
+	use("github/copilot.vim")
+
 	-- Lint
 	use("mfussenegger/nvim-lint")
 
-	-- format
+	-- Format
 	use({
 		"stevearc/conform.nvim",
 	})
 
-	-- treesitter
+	use({ "nvim-treesitter/nvim-treesitter-context" })
+
+	-- Treesitter (Better colors)
 	use("tree-sitter/tree-sitter")
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+
 	-- Utils
 	use("p00f/nvim-ts-rainbow")
-	use("norcalli/nvim-colorizer.lua")
-	use("jiangmiao/auto-pairs")
+	use("norcalli/nvim-colorizer.lua") -- Make hex colors appears
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 
-	use("terrortylor/nvim-comment")
+	use("terrortylor/nvim-comment") -- Godly plugin
 	use({
 		"windwp/nvim-ts-autotag",
 		config = function()
@@ -73,7 +78,7 @@ return require("packer").startup(function()
 
 	-- LSP
 	use("onsails/lspkind-nvim")
-	use("glepnir/lspsaga.nvim")
+	use("nvimdev/lspsaga.nvim")
 
 	-- GIT
 	use({

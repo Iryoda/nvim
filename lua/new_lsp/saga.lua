@@ -1,5 +1,4 @@
 local ok, lspsaga = pcall(require, "lspsaga")
--- local ok, catpuccinIntegrations = pcall(require, "catppuccin.groups.integrations.lsp_saga")
 
 if not ok then
 	return
@@ -8,6 +7,10 @@ end
 lspsaga.setup({
 	symbol_in_winbar = {
 		enable = false,
+	},
+	lightbulb = {
+		enable = true,
+		sign = false,
 	},
 })
 
