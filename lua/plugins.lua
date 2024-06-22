@@ -65,12 +65,6 @@ return require("packer").startup(function()
 	})
 
 	use("terrortylor/nvim-comment") -- Godly plugin
-	use({
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	})
 
 	-- Theme
 	-- use("marko-cerovac/material.nvim")
