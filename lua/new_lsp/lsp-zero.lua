@@ -11,13 +11,6 @@ lspzero.preset({
     },
 })
 
-lspzero.ensure_installed({
-    "elixirls",
-    "gopls",
-    "tsserver",
-    "rust_analyzer",
-})
-
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false, noremap = true }
     local bind = vim.keymap.set
@@ -39,8 +32,6 @@ local on_attach = function(client, bufnr)
     bind("n", "<Leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true, noremap = true })
     bind("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
     bind("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-
-    lspzero.buffer_autoformat()
 end
 
 lspzero.on_attach(on_attach)
@@ -50,25 +41,21 @@ lspzero.set_server_config({
     end,
 })
 
-lspzero.configure("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim", "use", "log" },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
+lspconfig.lua_ls.setup({
+    Lua = {
+        diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { "vim", "use", "log" },
+        },
+        workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = {
+                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
             },
         },
     },
 })
-
-lspzero.setup()
 
 lspconfig.gleam.setup({
     on_attach = on_attach,

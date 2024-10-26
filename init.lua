@@ -13,4 +13,3 @@ require("mappings")
 require("colorscheme")
 
 -- vim.cmd([[hi rainbowcol1 guifg=#84FFFF]])
---

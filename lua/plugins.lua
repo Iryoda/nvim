@@ -34,6 +34,14 @@ return require("packer").startup(function()
 		},
 	})
 
+	--
+	use({
+		"xiyaowong/transparent.nvim",
+		config = function()
+			require("transparent").setup({})
+		end,
+	})
+
 	-- Copilot
 	use("github/copilot.vim")
 

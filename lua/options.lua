@@ -50,3 +50,6 @@ opt.incsearch = true -- Shows the match while typing
 
 opt.relativenumber = true
 opt.cmdheight = 1
+
+opt.spelllang = "en_us,pt_br"
+opt.spell = true

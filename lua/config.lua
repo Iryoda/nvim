@@ -1,4 +1,4 @@
-require("configs/change-kitty-bg")
+-- require("configs/change-kitty-bg")
 require("configs/treesitter")
 require("configs/telescope")
 require("configs/gitsigns")

@@ -1,32 +1,31 @@
 local ok, conform = pcall(require, "conform")
 
 if not ok then
-    return
+	return
 end
 
+local prettier = { { "prettierd", "prettier" } }
+
 conform.setup({
-    formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "black" },
+	formatters_by_ft = {
+		lua = { "stylua" },
+		python = { "black" },
 
-        javascript = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
+		javascript = prettier,
+		typescript = prettier,
+		typescriptreact = prettier,
+		javascriptreact = prettier,
+		svelte = prettier,
+		json = prettier,
 
-        svelte = { { "prettierd", "prettier" } },
+		rust = { "rustfmt" },
+		gleam = { "gleamfmt" },
+		go = { "gofmt" },
 
-        json = { { "prettierd", "prettier" } },
-
-        rust = { "rustfmt" },
-        gleam = { "gleamfmt" },
-        go = { "gofmt" },
-
-        -- kotlin = { "ktlint" },
-    },
-    format_on_save = {
-        lsp_fallback = false,
-        async = true,
-        timeout_ms = 500,
-    },
+		-- kotlin = { "ktlint" },
+	},
+	format_on_save = {
+		lsp_format = "fallback",
+		timeout_ms = 500,
+	},
 })
