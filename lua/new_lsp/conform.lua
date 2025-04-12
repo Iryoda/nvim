@@ -4,7 +4,7 @@ if not ok then
 	return
 end
 
-local prettier = { { "prettierd", "prettier" } }
+local prettier = { "prettierd", "prettier", stop_after_first = true }
 
 conform.setup({
 	formatters_by_ft = {
@@ -19,10 +19,7 @@ conform.setup({
 		json = prettier,
 
 		rust = { "rustfmt" },
-		gleam = { "gleamfmt" },
 		go = { "gofmt" },
-
-		-- kotlin = { "ktlint" },
 	},
 	format_on_save = {
 		lsp_format = "fallback",

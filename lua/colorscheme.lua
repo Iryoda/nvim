@@ -11,36 +11,22 @@ require("catppuccin").setup({
 	no_italic = true, -- Force no italic
 	no_bold = false, -- Force no bold
 	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-		functions = { "italic" },
-		variables = { "italic" },
-		booleans = { "bold" },
+		comments = { "italic" }, -- Change the style of comments
+		conditionals = {},
 		loops = {},
+		functions = {},
 		keywords = {},
 		strings = {},
+		variables = {},
 		numbers = {},
+		booleans = { "bold" },
 		properties = {},
 		types = {},
 		operators = {},
+		miscs = {}, -- Uncomment to turn off hard-coded styles
 	},
-	native_lsp = {
-		enabled = true,
-		virtual_text = {
-			errors = { "italic" },
-			hints = { "italic" },
-			warnings = { "italic" },
-			information = { "italic" },
-		},
-		underlines = {
-			errors = { "underline" },
-			hints = { "underline" },
-			warnings = { "underline" },
-			information = { "underline" },
-		},
-	},
+	default_integrations = true,
 	color_overrides = {},
-
 	integrations = {
 		treesitter = true,
 		cmp = true,
@@ -49,21 +35,6 @@ require("catppuccin").setup({
 		telescope = true,
 		ts_rainbow = true,
 		lsp_saga = true,
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = { "italic" },
-				hints = { "italic" },
-				warnings = { "italic" },
-				information = { "italic" },
-			},
-			underlines = {
-				errors = { "underline" },
-				hints = { "underline" },
-				warnings = { "underline" },
-				information = { "underline" },
-			},
-		},
 	},
 	custom_highlights = function(cp)
 		return {

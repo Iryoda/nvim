@@ -53,7 +53,7 @@ return require("packer").startup(function()
 		"stevearc/conform.nvim",
 	})
 
-	use({ "nvim-treesitter/nvim-treesitter-context" })
+	-- use({ "nvim-treesitter/nvim-treesitter-context" })
 
 	-- Treesitter (Better colors)
 	use("tree-sitter/tree-sitter")
