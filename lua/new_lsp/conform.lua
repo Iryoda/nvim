@@ -8,6 +8,7 @@ local prettier = { "prettierd", "prettier", stop_after_first = true }
 
 conform.setup({
 	formatters_by_ft = {
+		c = {},
 		lua = { "stylua" },
 		python = { "black" },
 
