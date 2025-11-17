@@ -1,15 +1,15 @@
 local ok, lspsaga = pcall(require, "lspsaga")
 
 if not ok then
-	return
+    return
 end
 
 lspsaga.setup({
-	symbol_in_winbar = {
-		enable = false,
-	},
-	lightbulb = {
-		enable = true,
-		sign = false,
-	},
+    symbol_in_winbar = {
+        enable = false,
+    },
+    lightbulb = {
+        enable = true,
+        sign = false,
+    },
 })
