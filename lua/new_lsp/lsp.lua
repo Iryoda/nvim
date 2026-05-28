@@ -1,7 +1,4 @@
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then
-    return
-end
+vim.lsp.set_log_level(vim.log.levels.ERROR)
 
 local callback = function(args)
     local opts = { buffer = args.buf, remap = false, noremap = true }
@@ -29,25 +26,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = callback
 })
 
-lspconfig.lua_ls.setup({
-    Lua = {
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim", "use", "log" },
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim", "use", "log" },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                },
             },
         },
     },
 })
 
-lspconfig.gleam.setup({
-    on_attach = callback,
-})
+vim.lsp.enable({ "lua_ls", "gleam" })
 
 vim.diagnostic.config({
     underline = true,
