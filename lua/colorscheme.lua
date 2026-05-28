@@ -32,8 +32,6 @@ require("catppuccin").setup({
         cmp = true,
         gitsigns = true,
         nvimtree = true,
-        telescope = true,
-        ts_rainbow = true,
         lsp_saga = true,
     },
     custom_highlights = function(cp)

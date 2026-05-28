@@ -1,4 +1,3 @@
-local _, _ = pcall(require, "nvim-treesitter.configs")
 local ok, context = pcall(require, "treesitter-context")
 
 if not ok then

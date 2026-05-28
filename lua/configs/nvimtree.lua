@@ -42,10 +42,6 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		update_cwd = true,
 		ignore_list = {},
 	},
-	system_open = {
-		cmd = nil,
-		args = {},
-	},
 	diagnostics = {
 		enable = true,
 		show_on_dirs = false,
@@ -108,7 +104,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 				enable = false,
 				chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 				exclude = {
-					filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+					filetype = { "notify", "lazy", "qf", "diff", "fugitive", "fugitiveblame" },
 					buftype = { "nofile", "terminal", "help" },
 				},
 			},

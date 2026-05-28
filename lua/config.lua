@@ -1,6 +1,6 @@
 -- require("configs/change-kitty-bg")
 require("configs/treesitter")
-require("configs/telescope")
+require("configs/fff")
 require("configs/gitsigns")
 require("configs/comment")
 require("configs/nvimtree")

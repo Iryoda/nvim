@@ -1,93 +1,101 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
+local uv = vim.uv or vim.loop
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-    execute("packadd packer.nvim")
+if not uv.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
 
-return require("packer").startup(function()
-    use("wbthomason/packer.nvim")
+vim.opt.rtp:prepend(lazypath)
 
+require("lazy").setup({
     -- LSP
-    use("neovim/nvim-lspconfig")
-    use("williamboman/mason.nvim")
-    use("williamboman/mason-lspconfig.nvim")
+    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
 
     -- MINI
-    use("echasnovski/mini.nvim")
-    use("echasnovski/mini.icons")
+    "echasnovski/mini.nvim",
+    "echasnovski/mini.icons",
 
-    --
-    use({
+    {
         "xiyaowong/transparent.nvim",
         config = function()
             require("transparent").setup({})
         end,
-    })
+    },
 
     -- Copilot
-    use("github/copilot.vim")
+    "github/copilot.vim",
 
     -- Lint
-    use("mfussenegger/nvim-lint")
+    "mfussenegger/nvim-lint",
 
     -- Format
-    use({
-        "stevearc/conform.nvim",
-    })
+    "stevearc/conform.nvim",
 
-    -- use({ "nvim-treesitter/nvim-treesitter-context" })
+	-- use({ "nvim-treesitter/nvim-treesitter-context" })
 
-    -- Treesitter (Better colors)
-    use("tree-sitter/tree-sitter")
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-    })
+	-- Treesitter (Better colors)
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+    },
 
     -- Utils
-    use("p00f/nvim-ts-rainbow")
-    use("norcalli/nvim-colorizer.lua") -- Make hex colors appears
-    use({
+    "norcalli/nvim-colorizer.lua", -- Make hex colors appears
+    {
         "windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup({})
         end,
-    })
+    },
 
-    use("terrortylor/nvim-comment") -- Godly plugin
+    "terrortylor/nvim-comment", -- Godly plugin
 
     -- Theme
     -- use("marko-cerovac/material.nvim")
-    use({ "catppuccin/nvim", as = "catppuccin" })
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+    },
 
     -- LSP
-    use("onsails/lspkind-nvim")
-    use("nvimdev/lspsaga.nvim")
+    "onsails/lspkind-nvim",
+    "nvimdev/lspsaga.nvim",
 
     -- GIT
-    use({
+    {
         "lewis6991/gitsigns.nvim",
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
         },
-    })
+    },
 
-    use({
+    {
         "kyazdani42/nvim-tree.lua",
-        requires = "kyazdani42/nvim-web-devicons",
-    })
+        dependencies = "kyazdani42/nvim-web-devicons",
+    },
 
-    use({
+    {
         "hoob3rt/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    })
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+    },
 
-    use({
-        "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    })
-end)
+    {
+        "dmtrKovalenko/fff.nvim",
+        build = function()
+            require("fff.download").download_or_build_binary()
+        end,
+    },
+}, {
+    defaults = {
+        lazy = false,
+    },
+})
