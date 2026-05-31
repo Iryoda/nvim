@@ -40,12 +40,11 @@ require("lazy").setup({
     -- Format
     "stevearc/conform.nvim",
 
-	-- use({ "nvim-treesitter/nvim-treesitter-context" })
-
-	-- Treesitter (Better colors)
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
+    -- Treesitter (Better colors)
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        lazy = false,
     },
 
     -- Utils
@@ -69,7 +68,6 @@ require("lazy").setup({
     -- LSP
     "onsails/lspkind-nvim",
     "nvimdev/lspsaga.nvim",
-
     -- GIT
     {
         "lewis6991/gitsigns.nvim",

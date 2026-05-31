@@ -1,4 +1,3 @@
--- require("configs/change-kitty-bg")
 require("configs/treesitter")
 require("configs/fff")
 require("configs/gitsigns")

@@ -1,9 +1,9 @@
 local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Better Command
@@ -57,7 +57,7 @@ map("n", "<leader>D", "\"_D")
 
 -- Copilot
 vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', {
-      expr = true,
-      replace_keycodes = false
-    })
-    vim.g.copilot_no_tab_map = true
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
