@@ -9,3 +9,10 @@ end
 icons.setup({})
 snippets.setup({})
 completion.setup({})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "fff_input",
+	callback = function()
+		vim.b.minicompletion_disable = true
+	end,
+})
