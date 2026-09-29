@@ -28,6 +28,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	on_attach = my_on_attach,
 	view = {
 		side = "right",
+		width = { min = 30, max = -1, padding = 1 },
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = false,
