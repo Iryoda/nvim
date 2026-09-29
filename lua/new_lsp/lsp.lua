@@ -4,11 +4,12 @@ local callback = function(args)
     local opts = { buffer = args.buf, remap = false, noremap = true }
     local bind = vim.keymap.set
 
-    bind("n", "gd", vim.lsp.buf.definition, opts)
+    bind("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
     bind("n", "gD", vim.lsp.buf.declaration, opts)
-    bind("n", "gi", vim.lsp.buf.implementation, opts)
-    bind("n", "gr", vim.lsp.buf.references, opts)
-    bind("n", "<space>D", vim.lsp.buf.type_definition, opts)
+    bind("n", "gi", "<cmd>Lspsaga finder imp<CR>", opts)
+    bind("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)
+    bind("n", "gR", "<cmd>Lspsaga finder def+imp+ref<CR>", opts)
+    bind("n", "<space>D", "<cmd>Lspsaga peek_type_definition<CR>", opts)
     bind("n", "<space>f", function()
         vim.lsp.buf.format({ async = true })
     end, opts)
@@ -44,7 +45,7 @@ vim.lsp.config("lua_ls", {
     },
 })
 
-vim.lsp.enable({ "lua_ls", "gleam" })
+vim.lsp.enable({ "lua_ls", "gleam", "ktpls" })
 
 vim.diagnostic.config({
     underline = true,
