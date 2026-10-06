@@ -10,7 +10,11 @@ nvim_lint.linters_by_ft = {
     javascriptreact = { "eslint" },
     typescriptreact = { "eslint" },
     svelte = { "eslint" },
+    kotlin = { "detekt" },
 }
+
+-- stock args ("-bp ") don't pass --input, so detekt scans the whole cwd
+nvim_lint.linters.detekt.args = { "--input" }
 
 local augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

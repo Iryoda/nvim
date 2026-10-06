@@ -19,6 +19,8 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    -- ktpls, Kotlin LSP (local checkout): Mason registry + lsp/ktpls.lua
+    { dir = "~/Documents/GitHub/kt-vibe-lsp/editors/nvim", name = "ktpls" },
 
     -- MINI
     "echasnovski/mini.nvim",

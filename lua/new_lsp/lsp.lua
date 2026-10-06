@@ -45,6 +45,19 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+-- ktpls compiles with Gradle for compiler diagnostics; the projects need
+-- JDK 25 (the default java on PATH is 21).
+vim.lsp.config("ktpls", {
+    init_options = {
+        compile = {
+            env = { JAVA_HOME = vim.fn.expand("~/.local/share/mise/installs/java/graalvm-community-25.0.2") },
+        },
+        -- Format like detekt's ktlint wrapper (IntelliJ style); a project's
+        -- own .editorconfig still wins
+        format = { editorconfig = vim.fn.stdpath("config") .. "/ktlint/editorconfig" },
+    },
+})
+
 vim.lsp.enable({ "lua_ls", "gleam", "ktpls" })
 
 vim.diagnostic.config({
